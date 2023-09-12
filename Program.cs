@@ -1,21 +1,20 @@
 ﻿using ConsoleBlackjack;
 using Op = ConsoleBlackjack.Operacoes;
 
-// Loop principal
-
 const string Comprar = "Comprar";
 const string Parar = "Parar";
-
-List<string> cartasJogador = new();
-List<string> cartasIA = new();
 
 do
 {
 	IEnumerable<string> baralho = new List<string>();
 
+	List<string> cartasJogador = new();
+	List<string> cartasIA = new();
+
 	int acaoJogador;
 	do
 	{
+		Console.WriteLine();
 		cartasJogador.Add(Regras.ComprarCarta(ref baralho));
 
 		Regras.EscreverPilha(cartasJogador, "Jogador");
@@ -23,6 +22,8 @@ do
 		acaoJogador = Op.LerOpcao("Escolha uma ação:", Comprar, Parar);
 	} while (acaoJogador == 0);
 
+	Console.WriteLine();
 	Regras.EscreverPilha(cartasJogador, "Jogador");
+	Console.WriteLine();
 
 } while (Op.LerBool("Outra partida?"));
